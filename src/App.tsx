@@ -1,16 +1,24 @@
 import React, { useState, FormEvent } from "react";
+import { FiTrash } from "react-icons/fi";
 
 import "./global.css";
 
-const todoList: String[] = [];
-
 function App() {
+	const [todoList, setTodoList] = useState<String[]>([]);
 	const [input, setInput] = useState("");
 
 	function handleFormSubmit(event: FormEvent) {
 		event.preventDefault();
-		todoList.push(input);
+		if (todoList.includes(input)) alert("Esse todo já existe");
+		else setTodoList([...todoList, input]);
 		setInput("");
+	}
+
+	function handleDeleteTodo(index: number) {
+		const newTodoList = todoList.filter(
+			(item) => index !== todoList.indexOf(item)
+		);
+		setTodoList(newTodoList);
 	}
 
 	return (
@@ -23,10 +31,22 @@ function App() {
 			<main className="container">
 				<h1>To do List</h1>
 				<div className="todo-container">
-					{todoList.map((item) => (
-						<div className="todo">
+					{todoList.map((item, index) => (
+						<div className="todo" key={index}>
 							<input type="checkbox" />
 							<p>{item}</p>
+							<FiTrash
+								style={{
+									position: "absolute",
+									width: "20px",
+									height: "20px",
+									right: "20px",
+									color: "var(--text-color)",
+									cursor: "pointer",
+									justifySelf: "flex-start",
+								}}
+								onClick={() => handleDeleteTodo(index)}
+							/>
 						</div>
 					))}
 				</div>

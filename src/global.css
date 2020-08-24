@@ -60,6 +60,7 @@ main.container h1 {
 .todo {
 	display: flex;
 	align-items: center;
+	position: relative;
 }
 
 .todo input[type="checkbox"] {
