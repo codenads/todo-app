@@ -1,5 +1,5 @@
 import React, { useState, FormEvent } from "react";
-import { FiTrash } from "react-icons/fi";
+import Todo from "./components/Todo";
 
 import "./global.css";
 
@@ -32,22 +32,11 @@ function App() {
 				<h1>To do List</h1>
 				<div className="todo-container">
 					{todoList.map((item, index) => (
-						<div className="todo" key={index}>
-							<input type="checkbox" />
-							<p>{item}</p>
-							<FiTrash
-								style={{
-									position: "absolute",
-									width: "20px",
-									height: "20px",
-									right: "20px",
-									color: "var(--text-color)",
-									cursor: "pointer",
-									justifySelf: "flex-start",
-								}}
-								onClick={() => handleDeleteTodo(index)}
-							/>
-						</div>
+						<Todo
+							todo={String(item)}
+							index={index}
+							handleDeleteTodo={handleDeleteTodo}
+						/>
 					))}
 				</div>
 				<form onSubmit={handleFormSubmit}>
