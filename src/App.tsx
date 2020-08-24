@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState, FormEvent } from "react";
 
 import "./global.css";
 
+const todoList: String[] = [];
+
 function App() {
+	const [input, setInput] = useState("");
+
+	function handleFormSubmit(event: FormEvent) {
+		event.preventDefault();
+		todoList.push(input);
+		setInput("");
+	}
+
 	return (
 		<div>
 			<header>
@@ -13,58 +23,20 @@ function App() {
 			<main className="container">
 				<h1>To do List</h1>
 				<div className="todo-container">
-					<div className="todo">
-						<input type="checkbox" />
-						<p>Content</p>
-					</div>
-					<div className="todo">
-						<input type="checkbox" />
-						<p>Content</p>
-					</div>
-					<div className="todo">
-						<input type="checkbox" />
-						<p>Content</p>
-					</div>
-					<div className="todo">
-						<input type="checkbox" />
-						<p>Content</p>
-					</div>
-					<div className="todo">
-						<input type="checkbox" />
-						<p>Content</p>
-					</div>
-					<div className="todo">
-						<input type="checkbox" />
-						<p>Content</p>
-					</div>
-					<div className="todo">
-						<input type="checkbox" />
-						<p>Content</p>
-					</div>
-					<div className="todo">
-						<input type="checkbox" />
-						<p>Content</p>
-					</div>{" "}
-					<div className="todo">
-						<input type="checkbox" />
-						<p>Content</p>
-					</div>{" "}
-					<div className="todo">
-						<input type="checkbox" />
-						<p>Content</p>
-					</div>{" "}
-					<div className="todo">
-						<input type="checkbox" />
-						<p>Content</p>
-					</div>{" "}
-					<div className="todo">
-						<input type="checkbox" />
-						<p>Content</p>
-					</div>
+					{todoList.map((item) => (
+						<div className="todo">
+							<input type="checkbox" />
+							<p>{item}</p>
+						</div>
+					))}
 				</div>
-				<form>
+				<form onSubmit={handleFormSubmit}>
 					<span>Create a to do</span>
-					<input type="text" />
+					<input
+						type="text"
+						value={input}
+						onChange={(event) => setInput(event.target.value)}
+					/>
 					<button>Create</button>
 				</form>
 			</main>
