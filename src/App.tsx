@@ -1,26 +1,75 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+
+import "./global.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div>
+			<header>
+				<div className="container">
+					<h2>To do App</h2>
+				</div>
+			</header>
+			<main className="container">
+				<h1>To do List</h1>
+				<div className="todo-container">
+					<div className="todo">
+						<input type="checkbox" />
+						<p>Content</p>
+					</div>
+					<div className="todo">
+						<input type="checkbox" />
+						<p>Content</p>
+					</div>
+					<div className="todo">
+						<input type="checkbox" />
+						<p>Content</p>
+					</div>
+					<div className="todo">
+						<input type="checkbox" />
+						<p>Content</p>
+					</div>
+					<div className="todo">
+						<input type="checkbox" />
+						<p>Content</p>
+					</div>
+					<div className="todo">
+						<input type="checkbox" />
+						<p>Content</p>
+					</div>
+					<div className="todo">
+						<input type="checkbox" />
+						<p>Content</p>
+					</div>
+					<div className="todo">
+						<input type="checkbox" />
+						<p>Content</p>
+					</div>{" "}
+					<div className="todo">
+						<input type="checkbox" />
+						<p>Content</p>
+					</div>{" "}
+					<div className="todo">
+						<input type="checkbox" />
+						<p>Content</p>
+					</div>{" "}
+					<div className="todo">
+						<input type="checkbox" />
+						<p>Content</p>
+					</div>{" "}
+					<div className="todo">
+						<input type="checkbox" />
+						<p>Content</p>
+					</div>
+				</div>
+				<form>
+					<span>Create a to do</span>
+					<input type="text" />
+					<button>Create</button>
+				</form>
+			</main>
+		</div>
+	);
 }
 
 export default App;
